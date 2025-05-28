@@ -1,0 +1,88 @@
+{
+  "name": "echolayer",
+  "version": "1.0.0",
+  "description": "Decentralized attention ecosystem tracking attention propagation across content and platforms",
+  "keywords": [
+    "blockchain",
+    "attention",
+    "decentralized",
+    "social-media",
+    "analytics",
+    "solana",
+    "rust",
+    "nextjs"
+  ],
+  "author": "EchoLayer Team",
+  "license": "MIT",
+  "homepage": "https://echolayers.xyz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EchoLayerS/EchoLayer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EchoLayerS/EchoLayer/issues"
+  },
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && cargo run",
+    "build": "npm run build:shared && npm run build:frontend && npm run build:backend",
+    "build:shared": "cd shared && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && cargo build --release",
+    "test": "npm run test:frontend && npm run test:backend && npm run test:contracts",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && cargo test",
+    "test:contracts": "cd smart-contracts && anchor test",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && cargo clippy",
+    "format": "npm run format:frontend && npm run format:backend",
+    "format:frontend": "cd frontend && npm run format",
+    "format:backend": "cd backend && cargo fmt",
+    "clean": "npm run clean:frontend && npm run clean:backend",
+    "clean:frontend": "cd frontend && rm -rf .next node_modules",
+    "clean:backend": "cd backend && cargo clean",
+    "docker:dev": "docker-compose -f docker/docker-compose.yml up -d",
+    "docker:prod": "docker-compose -f docker/docker-compose.prod.yml up -d",
+    "docker:down": "docker-compose -f docker/docker-compose.yml down",
+    "setup": "cd frontend && npm install && cd ../shared && npm install",
+    "contracts:build": "cd smart-contracts && anchor build",
+    "contracts:deploy": "cd smart-contracts && anchor deploy",
+    "contracts:test": "cd smart-contracts && anchor test",
+    "optimize": "bash scripts/optimize-project.sh",
+    "analyze": "npm run lint && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,jsx,ts,tsx}": [
+      "cd frontend && npm run lint:fix",
+      "cd frontend && npm run format"
+    ],
+    "backend/**/*.rs": [
+      "cd backend && cargo fmt",
+      "cd backend && cargo clippy --fix --allow-dirty"
+    ],
+    "**/*.md": [
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  }
+} 

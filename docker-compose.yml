@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database for main application data
+  postgres:
+    image: postgres:15-alpine
+    container_name: echolayer_postgres
+    environment:
+      POSTGRES_DB: echolayer_dev
+      POSTGRES_USER: echolayer
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - echolayer_network
+
+  # Redis for caching and session storage
+  redis:
+    image: redis:7-alpine
+    container_name: echolayer_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - echolayer_network
+
+  # Neo4j for graph database (propagation networks)
+  neo4j:
+    image: neo4j:5.13-community
+    container_name: echolayer_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_PLUGINS: '["graph-data-science"]'
+      NEO4J_dbms_security_procedures_unrestricted: gds.*
+      NEO4J_dbms_memory_heap_initial__size: 512m
+      NEO4J_dbms_memory_heap_max__size: 1G
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_conf:/conf
+      - neo4j_plugins:/plugins
+    networks:
+      - echolayer_network
+
+  # Optional: Adminer for database management
+  adminer:
+    image: adminer:latest
+    container_name: echolayer_adminer
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    networks:
+      - echolayer_network
+    depends_on:
+      - postgres
+
+  # Optional: Redis Commander for Redis management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: echolayer_redis_commander
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8082:8081"
+    networks:
+      - echolayer_network
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  neo4j_data:
+    driver: local
+  neo4j_logs:
+    driver: local
+  neo4j_conf:
+    driver: local
+  neo4j_plugins:
+    driver: local
+
+networks:
+  echolayer_network:
+    driver: bridge
+
+# Health checks and monitoring (optional, for production-like setup)
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
