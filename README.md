@@ -1,14 +1,16 @@
+<div align="center">
+
 # EchoLayer 🌊
 
-<div align="center">
-  <img src="assets/images/echolayer-logo.png" alt="EchoLayer Logo" width="200" height="200">
-</div>
+<img src="assets/images/echolayer-logo.png" alt="EchoLayer Logo" width="200" height="200">
 
 [![GitHub Stars](https://img.shields.io/github/stars/EchoLayerS/EchoLayer.svg)](https://github.com/EchoLayerS/EchoLayer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/EchoLayerS/EchoLayer)
 [![Rust](https://img.shields.io/badge/rust-1.75%2B-orange.svg)](https://www.rust-lang.org)
 [![TypeScript](https://img.shields.io/badge/typescript-5.0%2B-blue.svg)](https://www.typescriptlang.org)
+
+</div>
 
 > **🚀 The Revolutionary Decentralized Attention Ecosystem**  
 > Track, measure, and monetize attention propagation across content, platforms, and networks with advanced blockchain technology.
@@ -674,47 +676,6 @@ Use our [GitHub Issues](https://github.com/EchoLayerS/EchoLayer/issues) for:
 
 ---
 
-## 📋 Project Roadmap
-
-### 🎯 Phase 1: Foundation (Q1 2024) ✅
-- [x] Core architecture setup and design
-- [x] Echo Index algorithm implementation
-- [x] Basic frontend MVP with React/Next.js
-- [x] Backend API with Rust/Actix-web
-- [x] PostgreSQL/Redis/Neo4j integration
-- [x] Smart contract framework setup
-
-### 🚧 Phase 2: Echo Engine (Q2 2024) - In Progress
-- [x] Advanced Echo Index calculation engine
-- [x] Propagation tracking system with graph analysis
-- [x] Reward distribution mechanism
-- [ ] Multi-platform data integration APIs
-- [ ] Real-time calculation optimization
-- [ ] Advanced analytics dashboard
-
-### 📋 Phase 3: Platform Integration (Q3 2024)
-- [ ] Twitter/X API integration
-- [ ] Telegram bot and channel monitoring
-- [ ] LinkedIn content tracking
-- [ ] YouTube analytics integration
-- [ ] Cross-platform propagation analysis
-
-### 🎪 Phase 4: Production Launch (Q4 2024)
-- [ ] Mainnet smart contract deployment
-- [ ] Token generation event (TGE)
-- [ ] Mobile application (React Native)
-- [ ] Partnership ecosystem development
-- [ ] Community governance implementation
-
-### 🔮 Phase 5: Advanced Features (2025)
-- [ ] AI-powered content quality analysis
-- [ ] Predictive propagation modeling
-- [ ] Advanced network effect algorithms
-- [ ] Cross-chain bridge implementation
-- [ ] Enterprise API and whitelabel solutions
-
----
-
 ## 📊 Performance Metrics
 
 ### ⚡ System Performance
@@ -771,23 +732,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [Neo4j](https://neo4j.com/) - Graph database platform
 - [Solana](https://solana.com/) - High-performance blockchain
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-
----
-
-## 📞 Support & Community
-
-### 💬 Get Help & Connect
-
-- **📚 Documentation**: [docs.echolayers.xyz](https://docs.echolayers.xyz)
-- **🐦 Twitter Updates**: [@EchoLayer_](https://x.com/EchoLayer_)
-- **📧 Email Support**: hello@echolayers.xyz
-- **🐛 Bug Reports**: [GitHub Issues](https://github.com/EchoLayerS/EchoLayer/issues)
-- **💡 Feature Requests**: [GitHub Discussions](https://github.com/EchoLayerS/EchoLayer/discussions)
-
-### 🆘 Support Channels
-
-- **Partnership Inquiries**: partnerships@echolayers.xyz
-- **Security Issues**: security@echolayers.xyz (PGP: [Public Key](https://echolayers.xyz/pgp))
 
 ---
 
